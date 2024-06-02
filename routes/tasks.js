@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../model/helper");
 
-// Retrieve all tasks with user names
+// Function to retrieve all tasks with user names
 const getAllTasks = async (req, res) => {
   try {
     const results = await db(`
@@ -10,9 +10,9 @@ const getAllTasks = async (req, res) => {
       FROM tasks 
       LEFT JOIN users ON tasks.user_id = users.id;
     `);
-    res.send(results.data);
+    res.json(results.data);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -30,39 +30,62 @@ router.get("/:user_id", async (req, res) => {
       FROM tasks 
       WHERE user_id = ${user_id};
     `);
-    res.send(results.data);
+    res.json(results.data);
   } catch (err) {
-    res.status(500).send({ message: `User not found` });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
 // Route for adding a new task
+
 router.post("/", async (req, res) => {
   const { description, category, user_id } = req.body;
-  console.log(req.body);
   try {
-    await db(`
+    await db(
+      `
       INSERT INTO tasks (description, isDone, category, user_id) 
-      VALUES ('${description}', 0, '${category}', '${user_id}');
-    `);
+      VALUES ('${description}', '0', '${category}', '${user_id}');
+    `
+    );
     getAllTasks(req, res);
   } catch (err) {
-    res.status(500).send(err);
+    console.error("Error inserting task:", err); // Log the error for debugging
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", message: err.message });
   }
 });
+
+// router.post("/", async (req, res) => {
+//   const { description, category, user_id } = req.body;
+//   try {
+//     await db(
+//       `
+//       INSERT INTO tasks (description, isDone, category, user_id)
+//       VALUES (?, 0, ?, ?);
+//     `,
+//       [description, category, user_id]
+//     );
+//     getAllTasks(req, res);
+//   } catch (err) {
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
 
 // Route for updating task completion status
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await db(`
+    await db(
+      `
       UPDATE tasks 
       SET isDone = !isDone 
-      WHERE id=${id};
-    `);
+      WHERE id='~${id}';
+    `
+    );
     getAllTasks(req, res);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -70,13 +93,15 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await db(`
+    await db(
+      `
       DELETE FROM tasks 
-      WHERE id=${id};
-    `);
+      WHERE id='${id}';
+    `
+    );
     getAllTasks(req, res);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

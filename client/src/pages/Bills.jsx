@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "../styling/Bills.css";
 
 export default function Bills({ users }) {
   const [bills, setBills] = useState([]);
@@ -66,7 +65,7 @@ export default function Bills({ users }) {
   };
 
   return (
-    <div className="bills-main">
+    <div className="container">
       <div className="bills-header">
         <div>
           <a href="#">DUE DATE</a>

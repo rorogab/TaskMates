@@ -32,7 +32,7 @@
 
 ## About The Project
 
-<strong>TaskMates App</strong> is a web-based platform designed to streamline task management and coordination among cohabitants. It simplifies the process of assigning, tracking, and completing tasks within a shared living space, promoting harmony and efficiency among users.
+<strong>Task Mates App</strong> is a web-based platform designed to streamline task management and coordination among cohabitants. It simplifies the process of assigning, tracking, and completing tasks within a shared living space, promoting harmony and efficiency among users.
 
 `https://github.com/rorogab/TaskMates`
 
@@ -40,13 +40,19 @@
 
 - User-Friendly Interface: An intuitive and user-friendly interface that makes task sharing and management a breeze.
 
-- Task Assignment: Assign tasks to specific users, set due dates, and add task descriptions for clarity.
+- Task Assignment: Assign tasks to specific users; add task descriptions for clarity; mark tasks as done.
 
-<!-- - Real-Time Updates: Receive real-time notifications and updates when tasks are completed or modified. -->
+## Feature features
 
-<!-- - Task History: Maintain a history of completed tasks for reference and accountability. -->
+- Real-Time Updates: Receive real-time notifications and updates when tasks are completed or modified.
 
-<!-- - Responsive Design: Accessible on various devices, including smartphones, tablets, and desktops. -->
+- Task History: Maintain a history of completed tasks for reference and accountability.
+
+- Responsive Design: Accessible on various devices, including smartphones, tablets, and desktops.
+
+- Groups / Chat: Be able to create groups and have a virtual "home". Chat with roommates and recieve notifications.
+
+- Bills: Manage bills and other flat expenses, everything shared with everyone from your "home".
 
 ## Tech Stack
 
@@ -63,9 +69,6 @@
 
 - Run `npm install` in project directory. This will install server-related dependencies such as `express`.
 - `cd client` and run `npm install`. This will install client dependencies (React).
-<!-- - Run `npm install react-router-dom` in the client dependecies.
-- Run `npm install axios`. This will be installed in the client dependecies.
-- Run `npm install jsonwebtoken bcrypt` in project directory. -->
 
 ## Database Prep
 
@@ -77,12 +80,10 @@
   DB_HOST=localhost
   DB_USER=root
   DB_NAME=task_mates
-
   DB_PASS=YOURPASSWORD
 ```
 
 - Run `npm run migrate` in the project folder of this repository, in a new terminal window. This will create the tables `tasks`, `users`and `bills` in your database.
-  
 
   <img width="566" alt="Captura de pantalla DB" src="https://github.com/rorogab/TaskMates/assets/92514975/d4ea2408-3044-489e-b569-6e183cd309bb">
 
@@ -90,9 +91,5 @@
 
 - Run `npm start` in project directory to start the Express server on port 5001
 - In another terminal, do `cd client` and run `npm run dev` to start the client in development mode with hot reloading in port localhost 5173.
-
-## Contributing
-
-We welcome contributions from the community.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import "../styling/UserProfile.css";
 import { useParams, Link } from "react-router-dom";
 
 function UserProfile() {
@@ -27,19 +26,19 @@ function UserProfile() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg">
       <h3>{user.name}</h3>
       <div>
         <img
-          className="card-img-top"
-          src="https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg"
-          alt="Card image cap"
+          className="w-full"
+          href="../assets/favicons/appartment.png"
+          alt="Appartment"
         />
       </div>
-      <div>
+      <div className="px-6 py-4">
         <label>Name:</label> {user.name}
       </div>
-      <div>
+      <div className="font-bold text-xl mb-2">
         <label>Last Name:</label> {user.lastname}
       </div>
       <p>

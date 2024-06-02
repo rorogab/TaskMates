@@ -74,98 +74,131 @@ function Register({ onRegisterSuccess }) {
   };
 
   return (
-    <div>
-      <h2>Register form</h2>
-      <form onSubmit={handleSubmit}>
-        {formErrors.email && (
-          <div className="text-danger">{formErrors.email}</div>
-        )}
-        <div className="mb-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="lastname" className="form-label">
-            Lastname
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="lastname"
-            name="lastname"
-            value={formData.lastname}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="adress" className="form-label">
-            Adress
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="adress"
-            name="adress"
-            value={formData.adress}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="description" className="form-label">
-            Description
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmit}
+    <div className="container">
+      <div className="w-full max-w-xs">
+        <h2 className="block text-gray-700 text-lg font-bold mb-2 text-center">
+          Register form
+        </h2>
+        <form
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleSubmit}
         >
-          Register
-        </button>
-      </form>
+          {formErrors.email && <div>{formErrors.email}</div>}
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Name
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="lastname"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Lastname
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              id="lastname"
+              name="lastname"
+              value={formData.lastname}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="adress"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Adress
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              id="adress"
+              name="adress"
+              value={formData.adress}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="description"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Description
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Email
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Password
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-sky-700 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-10"
+          >
+            Register
+          </button>
+          <div className="flex mt-5 space-x-4">
+            <div className="block text-gray-700 text-sm font-bold mb-2">
+              Already have an account?
+            </div>
+            <a
+              className="inline-block align-baseline font-bold text-sm text-sky-600 hover:text-sky-700"
+              href="/login"
+            >
+              Login
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
